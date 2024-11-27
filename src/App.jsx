@@ -24,39 +24,40 @@ const categoriesWithUsersAndProducts = categoriesFromServer.map(category => {
   return { ...category, owner: userName, products };
 });
 
-const filterAndSortPeople = (people, params) => {
-  const copyPeople = [...people];
-  const { query, sortBy, sortingOrder } = params;
-
-  if (query) {
-    copyPeople.filter(person =>
-      person.name.toLowerCase().includes(query.toLowerCase()))
-  }
-
-  if (sortBy !== '') {
-    copyPeople.sort((item1, item2) => {
-      switch (sortBy) {
-        case 'byProduct':
-        case 'byCategory':
-          return item1.localeCompare(item2);
-        default:
-          return 0;
-      }
-    });
-  }
-
-  if (sortingOrder) {
-    //
-  }
-
-  return copyPeople;
-};
+// const filterAndSortPeople = (people, params) => {
+//   const copyPeople = [...people];
+//   const { query, sortBy, sortingOrder } = params;
+//
+//   if (query) {
+//     copyPeople.filter(person =>
+//       person.name.toLowerCase().includes(query.toLowerCase()),
+//     );
+//   }
+//
+//   if (sortBy !== '') {
+//     copyPeople.sort((item1, item2) => {
+//       switch (sortBy) {
+//         case 'byProduct':
+//         case 'byCategory':
+//           return item1.localeCompare(item2);
+//         default:
+//           return 0;
+//       }
+//     });
+//   }
+//
+//   if (sortingOrder) {
+//     //
+//   }
+//
+//   return copyPeople;
+// };
 
 export const App = () => {
   const [selectedPeople, setSelectedPeople] = useState([]);
   const [query, setQuery] = useState(null);
-  const [sortBy, setSortBy] = useState(null);
-  const [sortingOrder, setSortingOrder] = useState('asc');
+  // const [sortBy, setSortBy] = useState(null);
+  // const [sortingOrder, setSortingOrder] = useState('asc');
 
   const onPersonClick = slug => () => {
     if (selectedPeople.includes(slug)) {
